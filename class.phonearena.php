@@ -18,11 +18,6 @@ class phoneArena
 	var $phoneName;
 	var $phoneScraping;
 
-	function getHtml($url)
-	{
-		return file_get_contents($this->urlbase.$url);
-	}
-
 	function getCompany()
 	{
 		$html = $this->getHtml($this->urlCompanys);
@@ -124,6 +119,11 @@ class phoneArena
 	function getPhoneScraping()
 	{
 		return $this->phoneScraping;
+	}
+	
+	function getHtml($url)
+	{
+		return file_get_contents($this->urlbase.$url);
 	}
 }
 
