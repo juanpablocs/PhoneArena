@@ -1,8 +1,11 @@
 <?php
+
+namespace PhoneArena;
+
 // @author: juanpablocs21@gmail.com
-// @class: phoneArena
+// @class: PhoneArena
 // @description: scraping all
-class phoneArena
+class Scraper
 {
 	var $urlbase = "http://www.phonearena.com";
 	var $urlCompanys = "/phones/manufacturers";
@@ -69,7 +72,7 @@ class phoneArena
 	{
 		preg_match('#<a class="s_thumb" href="([^"]+)" >#si', $buffer, $lnk);
 		preg_match('#<img src="([^"]+)" alt="(?:[^"]+)" widht="(?:[^"]+)" height="(?:[^"]+)" />#si', $buffer, $img);
-		preg_match('#<span class="title">([^<]+)</span>#si', $buffer, $name);
+		preg_match('#>([^<]+)</a></h3>#si', $buffer, $name);
 
 		$this->phoneUrl = @$lnk[1];
 		$this->phoneImage = "http:".@$img[1];
@@ -126,12 +129,3 @@ class phoneArena
 		return file_get_contents($this->urlbase.$url);
 	}
 }
-
-$a = new phoneArena;
-
-if(!empty($_GET['company'])):
-	print json_encode($a->getPhonesByCompany($_GET['company'], (int)@$_GET['page']));
-else:
-	print json_encode($a->getCompany());
-endif;
-

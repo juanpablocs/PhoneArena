@@ -1,0 +1,17 @@
+{
+    "name": "juanpablocs/phonearena",
+    "description": "Scraping data from PhoneArena",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Juan Pablo",
+            "email": "juanpablocs21@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+          "PhoneArena\\": "src/PhoneArena"
+        }
+    },
+    "require": {}
+}
